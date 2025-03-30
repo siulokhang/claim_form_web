@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/claim_form_web/static/css/main.dbd0536e.css",
+    "main.js": "/claim_form_web/static/js/main.fda056e1.js",
+    "static/js/488.16925c44.chunk.js": "/claim_form_web/static/js/488.16925c44.chunk.js",
+    "index.html": "/claim_form_web/index.html",
+    "main.dbd0536e.css.map": "/claim_form_web/static/css/main.dbd0536e.css.map",
+    "main.fda056e1.js.map": "/claim_form_web/static/js/main.fda056e1.js.map",
+    "488.16925c44.chunk.js.map": "/claim_form_web/static/js/488.16925c44.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dbd0536e.css",
+    "static/js/main.fda056e1.js"
+  ]
+}

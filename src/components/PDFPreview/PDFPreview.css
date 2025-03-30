@@ -1,0 +1,298 @@
+.preview-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.preview-header {
+  padding: 1rem;
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.back-button {
+  padding: 0.5rem 1rem;
+  background-color: #6b7280;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #4b5563;
+}
+
+.preview-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.pdf-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #e5e7eb;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.pdf-viewer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #f9fafb;
+}
+
+.pdf-placeholder {
+  width: 100%;
+  height: auto; /* Adjust height to auto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  position: relative; /* Add position relative */
+}
+
+.pdf-image {
+  max-width: 100%;
+  height: auto; /* Adjust height to auto */
+  object-fit: contain; /* Ensure the image fits within the container */
+}
+
+.page-number {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #4b5563;
+}
+
+.pdf-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  position: absolute; /* Add position absolute */
+  top: 0;
+  left: 0;
+}
+
+.pdf-controls {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.control-button {
+  padding: 0.5rem 1rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.control-button:hover {
+  background-color: #2563eb;
+}
+
+.data-section {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.data-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.data-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.data-item label {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.data-item input {
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #d1d5db;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.data-table th {
+  background-color: #f3f4f6;
+}
+
+.data-table input {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+}
+
+.submit-button {
+  margin: 0; /* Ensure no extra margin */
+  padding: 0.5rem 1rem;
+  background-color: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #16a34a;
+}
+
+.add-row-button {
+  margin: 0; /* Remove any extra margin */
+  padding: 0.5rem 1rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-row-button:hover {
+  background-color: #2563eb;
+}
+
+.remove-row-button {
+  padding: 0.5rem 1rem;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.remove-row-button:hover {
+  background-color: #dc2626;
+}
+
+.highlighted-field {
+  background-color: yellow;
+  margin: 0; /* Remove any margin */
+  width: 100%; /* Ensure it spans the full width */
+  height: 100%; /* Ensure it spans the full height */
+  box-sizing: border-box; /* Include padding and border in the element's dimensions */
+}
+
+.data-table td.highlighted-cell {
+  background-color: yellow; /* Highlight the entire cell */
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  align-items: center; /* Align buttons vertically */
+  gap: 1rem; /* Add spacing between buttons */
+  margin-top: 1rem;
+  flex-wrap: wrap; /* Ensure buttons wrap if there's not enough space */
+}
+
+.confirm-page-button {
+  margin: 0; /* Ensure no extra margin */
+  padding: 0.5rem 1rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.confirm-page-button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.confirm-page-button:hover:not(:disabled) {
+  background-color: #2563eb;
+}
+
+.page-widget {
+  width: 200px;
+  background-color: #f3f4f6;
+  border-right: 1px solid #e5e7eb;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.widget-title {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color: #374151;
+}
+
+.page-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.page-item {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #ffffff;
+  transition: background-color 0.3s;
+}
+
+.page-item.active {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.page-item.confirmed {
+  border-color: #22c55e;
+}
+
+.page-item:hover {
+  background-color: #e5e7eb;
+}

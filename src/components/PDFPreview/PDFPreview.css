@@ -1,7 +1,25 @@
+/* Use common styles from shared.css and add component-specific styles */
+
+.page-widget {
+  position: fixed; /* Fix the widget on the left side */
+  top: 0;
+  left: 0;
+  height: 100vh; /* Full height */
+  width: 200px; /* Fixed width */
+  background-color: white;
+  border-right: 1px solid #e5e7eb; /* Add a border to separate it visually */
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  padding: 15px;
+  overflow-y: auto; /* Allow scrolling if content overflows */
+  z-index: 1000; /* Ensure it stays above other elements */
+}
+
 .preview-container {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  margin-left: 200px; /* Add margin to accommodate the fixed page-widget */
+  width: calc(100% - 200px); /* Ensure it fills the remaining width */
 }
 
 .preview-header {
@@ -25,101 +43,199 @@
 }
 
 .preview-layout {
-  display: flex;
-  flex: 1;
-  overflow: hidden;
+  display: flex; /* Change to flex layout for better control */
+  flex-direction: column; /* Stack elements vertically */
+  height: calc(100vh - 100px);
+  padding: 20px; /* Add padding for spacing */
 }
 
+.widget-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #2c3e50;
+  font-size: 18px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 8px;
+}
+
+.page-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.page-item {
+  padding: 8px 12px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.page-item:hover {
+  background-color: #f5f5f5;
+}
+
+.page-item.active {
+  background-color: #3498db;
+  color: white;
+}
+
+.page-item.confirmed {
+  border-left: 4px solid #2ecc71;
+}
+
+.main-content {
+  flex-grow: 1; /* Allow main-content to grow and fill available space */
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Split into two equal sections */
+  grid-gap: 20px; /* Add spacing between sections */
+  height: 100%; /* Ensure it takes full height of the parent */
+}
+
+/* PDF section styles */
 .pdf-section {
-  flex: 1;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  border-right: 1px solid #e5e7eb;
-  padding: 1rem;
-  overflow-y: auto;
+  margin-bottom: 20px;
 }
 
-.pdf-viewer {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  padding: 1rem;
-  background-color: #f9fafb;
-}
-
-.pdf-placeholder {
-  width: 100%;
-  height: auto; /* Adjust height to auto */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #e5e7eb;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  position: relative; /* Add position relative */
-}
-
-.pdf-image {
-  max-width: 100%;
-  height: auto; /* Adjust height to auto */
-  object-fit: contain; /* Ensure the image fits within the container */
-}
-
-.page-number {
-  text-align: center;
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  color: #4b5563;
-}
-
-.pdf-iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  position: absolute; /* Add position absolute */
-  top: 0;
-  left: 0;
+.section-title {
+  margin: 0;
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+  color: #2c3e50;
+  font-size: 18px;
 }
 
 .pdf-controls {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #f8f9fa;
 }
 
 .control-button {
-  padding: 0.5rem 1rem;
-  background-color: #3b82f6;
+  background-color: #3498db;
   color: white;
   border: none;
+  padding: 6px 12px;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  margin: 0 5px;
+  transition: background-color 0.2s;
 }
 
 .control-button:hover {
-  background-color: #2563eb;
+  background-color: #2980b9;
 }
 
+.pdf-viewer {
+  flex-grow: 1;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+}
+
+.pdf-placeholder {
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+}
+
+.pdf-image {
+  max-width: 100%;
+  display: block;
+}
+
+/* Data section styles */
 .data-section {
-  flex: 1;
-  padding: 1rem;
-  overflow-y: auto;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  overflow: auto; /* Allow scrolling in all directions */
+  flex-grow: 1;
+  max-width: 100%; /* Ensure it doesn't exceed container width */
 }
 
-.section-title {
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
+/* Create a wrapper div for the table to enable horizontal scrolling */
+.table-wrapper {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  width: 100%;
+  margin-bottom: 15px; /* Add space at the bottom for better UX */
 }
 
-.section-subtitle {
-  font-size: 1rem;
+.data-table {
+  width: auto; /* Allow table to be sized by content */
+  min-width: 100%; /* Ensure it's at least as wide as the container */
+  border-collapse: collapse;
   margin-top: 1rem;
-  margin-bottom: 0.5rem;
+  table-layout: auto; /* Let browser calculate column widths based on content */
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #d1d5db;
+  padding: 0.5rem;
+  margin: 0;
+  font-size: 0.75rem;
+  position: relative;
+  word-break: normal; /* Use normal word breaking */
+  overflow: visible; /* Ensure content is visible */
+  white-space: normal; /* Allow text to wrap */
+  min-width: 50px; /* Minimum width for any cell */
+}
+
+/* Set wider sizes for specific columns */
+.data-table th:nth-child(2),
+.data-table td:nth-child(2) {  /* 費用項目 column */
+  min-width: 200px; /* Even wider for expense descriptions */
+}
+
+.data-table th:nth-child(3),
+.data-table td:nth-child(3) {  /* 工程編號 column */
+  min-width: 150px; /* Wide enough for typical project codes */
+}
+
+.data-table th:nth-child(4),
+.data-table td:nth-child(4) {  /* 金額 column */
+  min-width: 100px; /* Wide enough for amount values */
+}
+
+.data-table th:nth-child(5),
+.data-table td:nth-child(5) {  /* 成本中心 column */
+  min-width: 180px; /* Ensure dropdown has enough space */
+}
+
+.data-table th:nth-child(6),
+.data-table td:nth-child(6) {  /* 用途 column */
+  min-width: 180px; /* Ensure dropdown has enough space */
+}
+
+.data-table th:nth-child(7),
+.data-table td:nth-child(7) {  /* 操作 column */
+  min-width: 80px; /* Ensure enough space for the remove button */
+  text-align: center; /* Center the remove button */
+}
+
+.data-table input {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+  text-align: left; /* Left align text in inputs for better readability */
+  background-color: transparent;
+  box-shadow: none;
+  margin: 0;
+  word-break: normal; /* Allow natural word breaking */
+  white-space: normal; /* Permit wrapping */
 }
 
 .data-grid {
@@ -144,32 +260,27 @@
   border-radius: 4px;
 }
 
-.data-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
+.data-table td:active {
+  background-color: #dbeafe;
 }
 
-.data-table th,
-.data-table td {
-  border: 1px solid #d1d5db;
-  padding: 0.5rem;
-  text-align: left;
+.data-table td:hover {
+  cursor: pointer;
 }
 
 .data-table th {
   background-color: #f3f4f6;
 }
 
-.data-table input {
-  width: 100%;
-  padding: 0.5rem;
-  border: none;
-  outline: none;
+.data-table th:nth-child(5),
+.data-table td:nth-child(5),
+.data-table th:nth-child(6),
+.data-table td:nth-child(6) {
+  width: 150px;
 }
 
 .submit-button {
-  margin: 0; /* Ensure no extra margin */
+  margin-left: auto;
   padding: 0.5rem 1rem;
   background-color: #22c55e;
   color: white;
@@ -184,7 +295,7 @@
 }
 
 .add-row-button {
-  margin: 0; /* Remove any extra margin */
+  margin: 0;
   padding: 0.5rem 1rem;
   background-color: #3b82f6;
   color: white;
@@ -199,42 +310,61 @@
 }
 
 .remove-row-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.remove-row-button:hover {
+  background-color: #c0392b;
+}
+
+.move-row-button {
   padding: 0.5rem 1rem;
-  background-color: #ef4444;
+  background-color: #3b82f6;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin-right: 0.5rem;
 }
 
-.remove-row-button:hover {
-  background-color: #dc2626;
+.move-row-button:hover {
+  background-color: #2563eb;
 }
 
-.highlighted-field {
-  background-color: yellow;
-  margin: 0; /* Remove any margin */
-  width: 100%; /* Ensure it spans the full width */
-  height: 100%; /* Ensure it spans the full height */
-  box-sizing: border-box; /* Include padding and border in the element's dimensions */
+.drag-handle {
+  cursor: grab;
+  color: #95a5a6;
+}
+
+.drag-handle:hover {
+  color: #3b82f6;
+}
+
+.dragging-row {
+  background-color: #f3f4f6;
+  opacity: 0.8;
 }
 
 .data-table td.highlighted-cell {
-  background-color: yellow; /* Highlight the entire cell */
+  background-color: rgba(231, 76, 60, 0.1);
 }
 
 .action-buttons {
   display: flex;
-  justify-content: flex-end; /* Align buttons to the right */
-  align-items: center; /* Align buttons vertically */
-  gap: 1rem; /* Add spacing between buttons */
-  margin-top: 1rem;
-  flex-wrap: wrap; /* Ensure buttons wrap if there's not enough space */
+  justify-content: flex-end;
+  margin-top: 15px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .confirm-page-button {
-  margin: 0; /* Ensure no extra margin */
+  margin: 0;
   padding: 0.5rem 1rem;
   background-color: #3b82f6;
   color: white;
@@ -253,46 +383,86 @@
   background-color: #2563eb;
 }
 
-.page-widget {
-  width: 200px;
-  background-color: #f3f4f6;
-  border-right: 1px solid #e5e7eb;
-  padding: 1rem;
-  overflow-y: auto;
+.highlighted-field {
+  border-color: #e74c3c;
+  background-color: rgba(231, 76, 60, 0.05);
 }
 
-.widget-title {
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-  font-weight: bold;
-  color: #374151;
+.problematic-row {
+  background-color: rgba(231, 76, 60, 0.05);
 }
 
-.page-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.page-item {
+.dropdown {
+  width: 100%;
   padding: 0.5rem;
-  margin-bottom: 0.5rem;
   border: 1px solid #d1d5db;
   border-radius: 4px;
+  background-color: white;
+  font-size: 0.75rem;
+  color: #374151;
   cursor: pointer;
-  background-color: #ffffff;
-  transition: background-color 0.3s;
+  min-width: 150px; /* Ensure minimum width for dropdowns */
 }
 
-.page-item.active {
-  background-color: #3b82f6;
+.dropdown:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+  .page-widget {
+    width: 150px; /* Reduce width for smaller screens */
+  }
+
+  .preview-container {
+    margin-left: 150px; /* Adjust margin accordingly */
+  }
+}
+
+/* Styles for red and yellow highlights */
+.highlighted-field-red {
+  border-color: red;
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+.highlighted-field-yellow {
+  border-color: yellow;
+  background-color: rgba(255, 255, 0, 0.1);
+}
+
+/* Tooltip styling */
+.tooltip {
+  position: absolute;
+  background-color: black;
   color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  z-index: 1000; /* Ensure tooltip is above other elements */
+  pointer-events: none; /* Prevent tooltip from blocking interactions */
 }
 
-.page-item.confirmed {
-  border-color: #22c55e;
-}
-
-.page-item:hover {
-  background-color: #e5e7eb;
+.total-amount {
+  margin-top: 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #2c3e50;
+  text-align: right;
 }

@@ -1,43 +1,46 @@
-.container {
+.file-upload-container {
+  min-height: calc(100vh - 40px);
+}
+
+.upload-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  background-color: #f3f4f6;
   padding: 1rem;
 }
 
 .upload-box {
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
 }
 
-.title {
-  font-size: 1.125rem;
-  margin-bottom: 1rem;
+.section-title {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
 }
 
 .drop-zone {
-  border: 2px dashed #d1d5db;
+  border: 2px dashed #ced4da;
   border-radius: 8px;
   padding: 2rem;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   transition: all 0.3s ease;
 }
 
 .drop-zone.dragging {
-  border-color: #3b82f6;
-  background-color: #eff6ff;
+  border-color: #3498db;
+  background-color: rgba(52, 152, 219, 0.05);
 }
 
 .drop-zone:hover {
-  border-color: #3b82f6;
-  background-color: #eff6ff;
+  border-color: #3498db;
+  background-color: rgba(52, 152, 219, 0.05);
 }
 
 .file-input {
@@ -46,54 +49,31 @@
 
 .file-label {
   display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: #3b82f6;
+  padding: 8px 16px;
+  background-color: #3498db;
   color: white;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 0.5rem;
+  margin-top: 10px;
   transition: background-color 0.3s ease;
 }
 
 .file-label:hover {
-  background-color: #2563eb;
+  background-color: #2980b9;
 }
 
 .file-info {
   font-size: 0.875rem;
-  color: #4b5563;
-  margin-bottom: 1rem;
-}
-
-.confirm-button {
-  width: 100%;
-  padding: 0.5rem;
-  background-color: #22c55e;
-  color: white;
-  border: none;
+  color: #7f8c8d;
+  margin: 1rem 0;
+  padding: 8px 12px;
+  background-color: #f8f9fa;
   border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.confirm-button:hover {
-  background-color: #16a34a;
+  border-left: 3px solid #3498db;
 }
 
 .drag-text {
-  font-size: 0.875rem;
+  font-size: 1rem;
   margin-bottom: 0.5rem;
-}
-
-.pdf-preview {
-  margin-top: 1rem;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.pdf-iframe {
-  width: 100%;
-  height: 400px;
-  border: none;
+  color: #7f8c8d;
 }

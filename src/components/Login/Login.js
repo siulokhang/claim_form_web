@@ -3,33 +3,30 @@ import axios from "axios";
 import "./Login.css";
 
 function Login({ onLogin }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [credentials, setCredentials] = useState({ username: "", password: "" });
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setCredentials((prev) => ({ ...prev, [id]: value }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Attempting login with username:", username); // Log username for debugging
-    if (username === "test" && password === "test") {
-      console.log("Using test credentials, logging in...");
-      onLogin();
-      return;
-    }
+    const { username, password } = credentials;
+    if (username === "test" && password === "test") return onLogin();
+
     try {
-      const response = await axios.post("http://localhost:3001/login", {
+      const response = await axios.post("http://10.120.0.132:3001/login", {
         input_username: username,
         input_password: password,
       });
-      console.log("Login response:", response.data); // Log the response data for debugging
 
       if (response.data.status === "success") {
-        console.log("Login successful");
         onLogin();
       } else {
-        console.warn("Invalid credentials:", response.data);
         alert("Invalid credentials");
       }
-    } catch (error) {
-      console.error("Login error:", error.response || error.message);
+    } catch {
       alert("An error occurred during login. Please try again.");
     }
   };
@@ -43,8 +40,8 @@ function Login({ onLogin }) {
           <input
             type="text"
             id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={credentials.username}
+            onChange={handleChange}
             required
             autoComplete="off"
           />
@@ -54,8 +51,8 @@ function Login({ onLogin }) {
           <input
             type="password"
             id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={credentials.password}
+            onChange={handleChange}
             required
             autoComplete="off"
           />
